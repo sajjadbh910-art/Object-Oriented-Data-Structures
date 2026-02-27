@@ -9,7 +9,7 @@ public class ArrayBoundedStack<T> implements StackInterface<T> {
 
     private final int DFCAP = 100; // default capacity of the array
     private T[] elements;
-    private int topIndex;
+    private int topIndex = -1; // keeps track of the top index in the stack
 
     //empty params constructor that initializes the Array with a default capacity
        public ArrayBoundedStack(){
@@ -22,6 +22,12 @@ public class ArrayBoundedStack<T> implements StackInterface<T> {
 
     @Override
     public void push(T element) throws StackOverFlowException {
+           if(isFull())
+               throw new StackOverFlowException("push was attempted on a full stack");
+           else {
+               topIndex++;
+               elements[topIndex] = element;
+           }
 
     }
 
