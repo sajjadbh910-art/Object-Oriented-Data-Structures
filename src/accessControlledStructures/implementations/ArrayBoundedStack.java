@@ -23,7 +23,7 @@ public class ArrayBoundedStack<T> implements StackInterface<T> {
     @Override
     public void push(T element) throws StackOverFlowException {
            if(isFull())
-               throw new StackOverFlowException("push was attempted on a full stack");
+               throw new StackOverFlowException("push is attempted on a full stack");
            else {
                topIndex++;
                elements[topIndex] = element;
@@ -34,6 +34,12 @@ public class ArrayBoundedStack<T> implements StackInterface<T> {
     @Override
     public void pop() throws StackUnderFlowException {
 
+           if(isEmpty()){
+               throw new StackUnderFlowException("pop is attempted on an empty stack");
+           }else {
+               elements[topIndex] = null;
+               topIndex--;
+           }
     }
 
     @Override
@@ -50,4 +56,5 @@ public class ArrayBoundedStack<T> implements StackInterface<T> {
     public boolean isEmpty() {
         return false;
     }
+
 }
