@@ -43,18 +43,18 @@ public class ArrayBoundedStack<T> implements StackInterface<T> {
     }
 
     @Override
-    public T top() throws StackUnderFlowException {
-        return null;
+    public T top(){
+        return elements[topIndex];
     }
 
     @Override
     public boolean isFull() {
-        return false;
+        return topIndex == elements.length - 1;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return topIndex == -1;
     }
 
 }
