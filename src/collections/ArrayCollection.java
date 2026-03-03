@@ -12,6 +12,7 @@ public class ArrayCollection<T> implements CollectionInterface<T> {
     private T[] elements;
     private boolean isFound;
     private int numElements;
+    private int location;
 
     public ArrayCollection(){
         elements = (T[])new Object[DFCAP];
@@ -22,23 +23,45 @@ public class ArrayCollection<T> implements CollectionInterface<T> {
     }
 
 
-
     private void find(T target){
+        location = 0;
+        isFound = false;
 
+        while(location < elements.length){
+            if(elements[location] == target){
+                isFound = true;
+                return;
+            }else{
+             location++;
+            }
+        }
     }
+
     @Override
     public boolean add(T element) {
+        if(!isFull()) {
+            elements[numElements] = element;
+            numElements++;
+            return true;
+        }
+
         return false;
     }
 
     @Override
-    public T get() {
+    public T get(T target) {
+        find(target);
+
+        if(isFound){
+            return elements[location];
+        }
         return null;
     }
 
     @Override
     public boolean contains(T target) {
-        return false;
+        find(target);
+        return isFound;
     }
 
     @Override
