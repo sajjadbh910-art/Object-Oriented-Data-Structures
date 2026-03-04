@@ -78,16 +78,16 @@ public class ArrayCollection<T> implements CollectionInterface<T> {
 
     @Override
     public boolean isFull() {
-        return false;
+        return numElements == elements.length;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return numElements == 0;
     }
 
     @Override
     public int size() {
-        return 0;
+        return numElements;
     }
 }
