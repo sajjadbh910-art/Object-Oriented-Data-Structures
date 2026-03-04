@@ -66,7 +66,14 @@ public class ArrayCollection<T> implements CollectionInterface<T> {
 
     @Override
     public boolean remove(T target) {
-        return false;
+        find(target);
+
+        if(isFound){
+            elements[location] = elements[numElements - 1];
+            elements[numElements - 1] = null;
+            numElements--;
+        }
+        return isFound;
     }
 
     @Override
