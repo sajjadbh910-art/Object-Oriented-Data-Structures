@@ -3,7 +3,7 @@ package collections;
 import accessControlledStructures.specifications.CollectionInterface;
 /*
 
-implements the Collection Interface using an array
+implements the Collection Interface using an unsorted array
 
  */
 public class ArrayCollection<T> implements CollectionInterface<T> {
